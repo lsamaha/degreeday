@@ -5,7 +5,7 @@ home energy costs over time.
 
 ## Getting Started
 
-Build with maven. Deploy the REST API servers and access the standard endpoints.
+Build with maven. Deploy the REST API and access the standard endpoints.
 
 ## Location
 
