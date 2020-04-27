@@ -8,5 +8,6 @@ target/
 *.jar
 *.war
 *.ear
+*.*_env
 
 .DS_Store
