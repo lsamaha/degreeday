@@ -1,6 +1,8 @@
 package meadowbrook.weather.degreeday;
 
 import meadowbrook.weather.model.DailyAverage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 
@@ -8,6 +10,8 @@ import java.util.Collection;
  * Calculation that determines heating or cooling needs for the provided days.
  */
 public class DegreeDaysCalculation {
+
+    protected static final Logger logger = LoggerFactory.getLogger(DegreeDaysCalculation.class);
 
     /**
      * Determine heating or cooling needs for the provided days.
@@ -18,6 +22,7 @@ public class DegreeDaysCalculation {
      */
     public static Double calculateDegreeDays(
             Collection<DailyAverage> readings, final Double baseTemp, DegreeDays.DegreeDayType degreeDayType) {
+        logger.info(String.format("evaluated %d daily readings", readings.size()));
         if (degreeDayType == DegreeDays.DegreeDayType.HEATING) {
             return readings.stream()
                     .filter(r -> r.getDegrees() < baseTemp)

@@ -96,8 +96,8 @@ public class NCDCWeatherService implements WeatherService {
     private static DailyAverage asDailyAverage(String dateStr, Double min, Double max) {
         LocalDate readingDate = LocalDate.parse(dateStr, dateFormatter);
         double avg = (min + max) / 2d;
-        double roundAvg = new Double(decimalFormat.format(avg));
-        logger.info("min/max:" + min + "-" + max + " -> " + new Double(roundAvg));
+        double roundAvg = Double.parseDouble(decimalFormat.format(avg));
+        logger.debug("min/max:" + min + "-" + max + " -> " + roundAvg);
         return DailyAverage.create()
                 .degrees(roundAvg)
                 .units(Temperature.Units.CELSIUS)

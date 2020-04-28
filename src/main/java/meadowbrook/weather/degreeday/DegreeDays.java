@@ -1,10 +1,9 @@
 package meadowbrook.weather.degreeday;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import meadowbrook.weather.model.DailyAverage;
 import meadowbrook.weather.model.Temperature;
 
-import java.text.DecimalFormat;
 import java.util.Collection;
 
 /**
@@ -69,9 +68,14 @@ public class DegreeDays {
         return degreeDays;
     }
 
+    @JsonProperty("average")
     public Double getAverageDegreesPerDay() {
         return getNumDays() > 0 ? (Math.round(degreeDays / getNumDays() * 100)) / 100d : 0d;
     }
 
-    public enum DegreeDayType {HEATING, COOLING}
+    public enum DegreeDayType {
+        @JsonProperty("heating")
+        HEATING,
+        @JsonProperty("cooling")
+        COOLING}
 }

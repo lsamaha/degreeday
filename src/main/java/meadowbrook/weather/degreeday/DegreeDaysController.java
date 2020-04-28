@@ -31,12 +31,12 @@ public class DegreeDaysController {
     protected WeatherServiceFactory weatherServiceFactory;
 
     @RequestMapping("/degrees")
-    public DegreeDays getDegreeDays(@RequestParam(value = "baseTemp", required = false) Double baseTemp,
+    public DegreeDays getDegreeDays(@RequestParam(value = "base_temp", required = false) Double baseTemp,
                                            @RequestParam(value = "units", defaultValue = "C", required = false) String unitStr,
                                            @RequestParam(value = "type", defaultValue = "H", required = false) String degreeDayTypeStr,
-                                           @RequestParam(value = "startDate") String startDate,
-                                           @RequestParam(value = "endDate") String endDate,
-                                           @RequestParam(value = "stationId") String stationId)
+                                           @RequestParam(value = "start_date") String startDate,
+                                           @RequestParam(value = "end_date") String endDate,
+                                           @RequestParam(value = "station_id") String stationId)
             throws IllegalArgumentException {
         // a good base temp varies based on units (C/F) and degree day type (heating/cooling)
         if(baseTemp == null) {
@@ -49,9 +49,9 @@ public class DegreeDaysController {
 
     @RequestMapping("/dailies")
     public Collection<DailyAverage> getDailyTemps(@RequestParam(value = "units") String unitsStr,
-                                                  @RequestParam(value = "startDate") String startDateStr,
-                                                  @RequestParam(value = "endDate") String endDateStr,
-                                                  @RequestParam(value = "stationId") String stationId)
+                                                  @RequestParam(value = "start_date") String startDateStr,
+                                                  @RequestParam(value = "end_date") String endDateStr,
+                                                  @RequestParam(value = "station_id") String stationId)
             throws IllegalArgumentException {
         logger.info("getting " + startDateStr + "-" + endDateStr + " " + unitsStr + " @" + stationId);
         // parse dates
@@ -114,7 +114,7 @@ public class DegreeDaysController {
                 return Temperature.Units.valueOf(unitsStr);
             } catch (Exception e) {
                 throw new IllegalArgumentException("Invalid units specified and no translation was found for: \'"
-                        + unitsStr + "\'" + ". (Try C, F, Celsius, Fahrenheit, etc.)");
+                        + unitsStr + "\'" + ". (Try c, f, celsius, fahrenheit, etc.)");
             }
         }
     }
