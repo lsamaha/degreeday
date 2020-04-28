@@ -62,10 +62,22 @@ set in an environment variable.
 > curl "localhost:8080/degrees?units=CELSIUS&startDate=2015-01-01&endDate=2015-12-31&stationId=USW00014739&baseTemp=18"
 401 {"reason":"no NCDC application token was found in the environment variable NCDC_API_TOKEN","code":"401"}
 ...
-> export NCDC_API_TOKEN=ef9VaV25IlTaaf53kUdnv93kdfweEQ55y
+> export NCDC_API_TOKEN=<my_token>
 > mvn spring-boot:run
 ...
 > curl "localhost:8080/degrees?units=CELSIUS&startDate=2015-01-01&endDate=2015-12-31&stationId=USW00014739&baseTemp=18"
 200
 
+```
+
+## Docker
+
+Build a Docker image and run a container using:
+```bash
+docker build -t meadowbrook/degreeday:0.1 .
+docker run --env-file .local_env -p 8080:8080 meadowbrook/degreeday:0.1
+```
+Environemnt variables should be set in an env file (.local_env above):
+```bash
+NCDC_API_TOKEN=<my_token>
 ```
