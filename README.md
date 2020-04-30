@@ -74,8 +74,8 @@ set in an environment variable.
 
 Build a Docker image and run a container using:
 ```bash
-docker build -t meadowbrook/degreeday:0.1 .
-docker run --env-file .local_env -p 8080:8080 meadowbrook/degreeday:0.1
+docker build --rm -t lsamaha/degreeday-api:0.1 .
+docker run --env-file .local_env -p 8080:8080 lsamaha/degreeday-api:0.1
 ```
 Environemnt variables should be set in an env file (.local_env above):
 ```bash
