@@ -67,7 +67,7 @@ set in an environment variable.
 ...
 > curl "localhost:8080/degrees?units=celsius&start_date=2015-01-01&end_date=2015-12-31&station_id=USW00014739&base_temp=18"
 200
-
+{"num_days":365,"degree_days":3089.3,"num_readings":365,"base_temp":18.0,"units":"celsius","degree_day_type":"heating","average":8.46}
 ```
 
 ## Docker
@@ -77,7 +77,7 @@ Build a Docker image and run a container using:
 docker build --rm -t lsamaha/degreeday-api:0.1 .
 docker run --env-file .local_env -p 8080:8080 lsamaha/degreeday-api:0.1
 ```
-Environemnt variables should be set in an env file (.local_env above):
+Environment variables should be set in an env file (.local_env above):
 ```bash
 NCDC_API_TOKEN=<my_token>
 ```
