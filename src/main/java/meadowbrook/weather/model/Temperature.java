@@ -1,8 +1,6 @@
 package meadowbrook.weather.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.text.DecimalFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Models a temperature reading.
@@ -27,7 +25,9 @@ public abstract class Temperature {
     }
 
     public enum Units {
+        @JsonProperty("celsius")
         CELSIUS,
+        @JsonProperty("fahrenheit")
         FAHRENHEIT
     }
 
